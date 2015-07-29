@@ -7,4 +7,5 @@
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 		<include file="/changelogs/2015/cl-ravisen-001.xml" relativeToChangelogFile="true"/>
 		<include file="/changelogs/2015/cl-senr-001.xml" relativeToChangelogFile="true"/>
+		<include file="/changelogs/2015/SP1.sql" relativeToChangelogFile="true"/>
 </databaseChangeLog>
