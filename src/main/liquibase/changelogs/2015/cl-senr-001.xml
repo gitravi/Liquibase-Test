@@ -11,26 +11,16 @@
 				<tableExists tableName="Person"/>
 			</preConditions>
 			<comment>Stored procedure test</comment>
-			<sql>
-					
-						<!--
-						 =============================================
-						 Author:		Senr
-						 Create date: 29 July 2015
-						 Description:	GetTop10LatestUsers
-						 =============================================
-						-->
-						CREATE PROCEDURE GetTop10LatestUsers
-							AS
-						BEGIN					
-							SELECT top 10 * from Person order by ModifiedDate DESC;
-						END
-						
-			</sql>
+			<createProcedure>
+			CREATE OR REPLACE PROCEDURE  GetTop10LatestUsers
+			BEGIN
+			  SELECT top 10 * from Person order by ModifiedDate DESC;
+			END
+			</createProcedure>
 			<rollback>
-					 <sql>
-					 DROP PROCEDURE GetTop10LatestUsers;
-					 </sql>
+			 <sql>
+			 DROP PROCEDURE GetTop10LatestUsers;
+			 </sql>
 			</rollback>
 	</changeSet>
 </databaseChangeLog>
