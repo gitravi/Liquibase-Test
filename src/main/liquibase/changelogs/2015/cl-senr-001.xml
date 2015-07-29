@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+		
+		<changeSet id="001-senr-29Jul2015" author="senr" failOnError="false" runOnChange="true">
+			<preConditions onFail="MARK_RAN">
+				<tableExists tableName="Person"/>
+			</preConditions>
+			<comment>Stored procedure test</comment>
+			<sql>
+					SET ANSI_NULLS ON
+						GO
+						SET QUOTED_IDENTIFIER ON
+						GO
+						<!--
+						-- =============================================
+						-- Author:		Senr
+						-- Create date: 29 July 2015
+						-- Description:	GetTop10LatestUsers
+						-- =============================================
+						-->
+						CREATE PROCEDURE GetTop10LatestUsers
+							AS
+						BEGIN
+							-- SET NOCOUNT ON added to prevent extra result sets from
+							-- interfering with SELECT statements.
+							SET NOCOUNT ON;
+
+							-- Insert statements for procedure here
+							SELECT top 10 * from Person order by ModifiedDate DESC;
+						END
+						GO
+
+			</sql>
+			<rollback>
+					 <sql>
+					 DROP PROCEDURE GetTop10LatestUsers;
+					 </sql>
+			</rollback>
+	</changeSet>
+</databaseChangeLog>
