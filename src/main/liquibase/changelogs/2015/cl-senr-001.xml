@@ -17,11 +17,11 @@
 						SET QUOTED_IDENTIFIER ON
 						GO
 						<!--
-						-- =============================================
-						-- Author:		Senr
-						-- Create date: 29 July 2015
-						-- Description:	GetTop10LatestUsers
-						-- =============================================
+						 =============================================
+						 Author:		Senr
+						 Create date: 29 July 2015
+						 Description:	GetTop10LatestUsers
+						 =============================================
 						-->
 						CREATE PROCEDURE GetTop10LatestUsers
 							AS
