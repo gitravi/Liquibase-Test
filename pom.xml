@@ -13,7 +13,6 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
-
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -22,9 +21,14 @@
       <scope>test</scope>
     </dependency>
     <dependency>
+  		<groupId>com.microsoft.sqlserver</groupId>
+  		<artifactId>sqljdbc4</artifactId>
+  		<version>4.0</version>
+	</dependency>
+    <dependency>
     	<groupId>org.liquibase</groupId>
     	<artifactId>liquibase-maven-plugin</artifactId>
-    	<version>3.0.7</version>
+    	<version>3.4.0</version>
     	<type>maven-plugin</type>
     </dependency>
   </dependencies>
@@ -33,7 +37,7 @@
 		<plugin>
 		   <groupId>org.liquibase</groupId>
 		   <artifactId>liquibase-maven-plugin</artifactId>
-		   <version>3.0.7</version>
+		   <version>3.4.0</version>
 		   <executions>
 	          <execution>	          	  
 	              <goals>
@@ -45,7 +49,7 @@
 			  <propertyFile>src/main/liquibase/liquibase.properties</propertyFile>
 			  <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
 			  <propertyFileWillOverride>true</propertyFileWillOverride>
-		   </configuration>                
+		   </configuration>             
 		   
 		</plugin> 	
       </plugins>

@@ -1,12 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
- <changeSet id="001" author="ravisen" failOnError="true" runOnChange="true">
-        <comment>A sample change log</comment>
-        <createTable tableName="Table1">
-             <column name="id" type="int"/>
-             <column name="name" type="VARCHAR2(50,0)"/>
-             <column name="description" type="VARCHAR2(50,0)"/>
-         </createTable>
-		  <rollback>
-       			 <dropTable tableName="Table1"/>
-    	</rollback>
-</changeSet>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+		
+		<changeSet id="001-ravisen-29Jul2015" author="ravisen" failOnError="false" runOnChange="true">
+			<preConditions onFail="MARK_RAN">
+				<not>
+					<tableExists tableName="Person"/>
+				</not>
+			</preConditions>
+			<comment>A sample change log</comment>
+			<sql>
+					CREATE TABLE [Person](
+					[BusinessEntityID] [int] NOT NULL,
+					[PersonType] [nvarchar](2) NOT NULL,					
+					[Title] [nvarchar](10) NULL,
+					[FirstName] [nvarchar](10) NOT NULL,
+					[MiddleName] [nvarchar](10) NULL,
+					[LastName] [nvarchar](10) NOT NULL,
+					[Suffix] [nvarchar](10) NULL,
+					[EmailPromotion] [int] NOT NULL,					
+					[rowguid] [uniqueidentifier] ROWGUIDCOL  NOT NULL,
+					[ModifiedDate] [datetime] NOT NULL,
+				 CONSTRAINT [PK_Person_BusinessEntityID] PRIMARY KEY CLUSTERED 
+				(
+					[BusinessEntityID] ASC
+				)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+				) ON [PRIMARY]
+			</sql>
+			<rollback>
+					 <dropTable tableName="Person"/>
+			</rollback>
+	</changeSet>
+</databaseChangeLog>
