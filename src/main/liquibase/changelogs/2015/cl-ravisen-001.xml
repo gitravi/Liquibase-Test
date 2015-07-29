@@ -35,4 +35,21 @@
 					 <dropTable tableName="Person"/>
 			</rollback>
 	</changeSet>
+	<changeSet id="002-ravisen-29Jul2015" author="ravisen" failOnError="false" runOnChange="true">
+			<preConditions onFail="MARK_RAN">
+				<not>
+					<tableExists tableName="City"/>
+				</not>
+			</preConditions>
+			<comment>Add City Table</comment>
+			<sql>
+					CREATE TABLE [City](
+					[CityID] [int] NOT NULL,
+					[Name] [nvarchar](50) NOT NULL,					
+					[State] [nvarchar](50) NULL)					
+			</sql>
+			<rollback>
+					 <dropTable tableName="City"/>
+			</rollback>
+	</changeSet>
 </databaseChangeLog>
