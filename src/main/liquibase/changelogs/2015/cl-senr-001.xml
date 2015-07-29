@@ -12,10 +12,7 @@
 			</preConditions>
 			<comment>Stored procedure test</comment>
 			<sql>
-					SET ANSI_NULLS ON
-						GO
-						SET QUOTED_IDENTIFIER ON
-						GO
+					
 						<!--
 						 =============================================
 						 Author:		Senr
@@ -26,15 +23,10 @@
 						CREATE PROCEDURE GetTop10LatestUsers
 							AS
 						BEGIN
-							-- SET NOCOUNT ON added to prevent extra result sets from
-							-- interfering with SELECT statements.
-							SET NOCOUNT ON;
-
-							-- Insert statements for procedure here
+							SET NOCOUNT ON;							
 							SELECT top 10 * from Person order by ModifiedDate DESC;
 						END
-						GO
-
+						
 			</sql>
 			<rollback>
 					 <sql>
