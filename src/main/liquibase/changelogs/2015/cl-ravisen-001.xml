@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <changeSet id="001" author="ravisen" failOnError="true" runOnChange="true">
+        <comment>A sample change log</comment>
+        <createTable tableName="Table1">
+             <column name="id" type="int"/>
+             <column name="name" type="VARCHAR2(50,0)"/>
+             <column name="description" type="VARCHAR2(50,0)"/>
+         </createTable>
+		  <rollback>
+       			 <dropTable tableName="Table1"/>
+    	</rollback>
+</changeSet>

@@ -35,12 +35,16 @@
 		   <artifactId>liquibase-maven-plugin</artifactId>
 		   <version>3.0.7</version>
 		   <executions>
-	          <execution>
-	              <goals><goal>update</goal></goals>
+	          <execution>	          	  
+	              <goals>
+	              	<goal>update</goal>
+	              </goals>
 	          </execution>
       		</executions>
 		   <configuration>                  
 			  <propertyFile>src/main/liquibase/liquibase.properties</propertyFile>
+			  <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+			  <propertyFileWillOverride>true</propertyFileWillOverride>
 		   </configuration>                
 		   
 		</plugin> 	
