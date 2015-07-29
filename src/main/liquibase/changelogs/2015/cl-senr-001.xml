@@ -22,8 +22,7 @@
 						-->
 						CREATE PROCEDURE GetTop10LatestUsers
 							AS
-						BEGIN
-							SET NOCOUNT ON;							
+						BEGIN					
 							SELECT top 10 * from Person order by ModifiedDate DESC;
 						END
 						
