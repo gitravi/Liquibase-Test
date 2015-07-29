@@ -12,14 +12,17 @@
 			</preConditions>
 			<comment>Stored procedure test</comment>
 			<createProcedure>
-			CREATE OR REPLACE PROCEDURE  GetTop10LatestUsers
+			delimiter # 
+			CREATE PROCEDURE  GetTop10LatestUsers
+			AS
 			BEGIN
-			  SELECT top 10 * from Person order by ModifiedDate DESC;
+			  SELECT top 10 * from Person order by ModifiedDate DESC#
 			END
+			delimiter ;
 			</createProcedure>
 			<rollback>
 			 <sql>
-			 DROP PROCEDURE GetTop10LatestUsers;
+				DROP PROCEDURE GetTop10LatestUsers;
 			 </sql>
 			</rollback>
 	</changeSet>
