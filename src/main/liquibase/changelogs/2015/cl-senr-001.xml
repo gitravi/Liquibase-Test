@@ -7,21 +7,24 @@
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 		
 		<changeSet id="001-senr-29Jul2015" author="senr" failOnError="false" runOnChange="true">
-			<preConditions onFail="MARK_RAN">
-				<tableExists tableName="Person"/>
-			</preConditions>
-			<comment>Stored procedure test</comment>
-			<sql splitStatements="false" stripComments="false">
-				<![CDATA[ 				
-				  CREATE PROCEDURE GetTop10LatestUsers()
-				  BEGIN
-					SELECT top 10 * from Person order by ModifiedDate DESC;
-				  END;
-				]]>
-			</sql>
+			
+			<createProcedure catalogName="Test2"
+				comments="Stored procedure test"
+				dbms="SQL Server"
+				encoding="utf8"
+				path="testHello.sql"
+				procedureName="testHello"
+				relativeToChangelogFile="true"
+				schemaName="public">
+				CREATE OR REPLACE PROCEDURE testHello
+				IS
+				BEGIN
+				  PRINT('Hello From The Database!');
+				END;
+			</createProcedure>
 			<rollback>
 			 <sql>
-				DROP PROCEDURE GetTop10LatestUsers;
+				DROP PROCEDURE testHello;
 			 </sql>
 			</rollback>
 	</changeSet>
