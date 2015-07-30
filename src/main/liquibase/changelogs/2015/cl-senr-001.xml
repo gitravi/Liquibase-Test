@@ -13,7 +13,7 @@
 			<comment>Stored procedure test</comment>
 			<sql splitStatements="false" stripComments="false">
 				<![CDATA[ 				
-				  CREATE OR REPLACE PROCEDURE GetTop10LatestUsers()
+				  CREATE PROCEDURE GetTop10LatestUsers()
 				  BEGIN
 					SELECT top 10 * from Person order by ModifiedDate DESC;
 				  END;
