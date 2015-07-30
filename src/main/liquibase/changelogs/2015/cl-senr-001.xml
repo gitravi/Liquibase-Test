@@ -8,23 +8,31 @@
 		
 		<changeSet id="001-senr-29Jul2015" author="senr" failOnError="false" runOnChange="true">
 			
-			<createProcedure catalogName="Test2"
-				comments="Stored procedure test"
-				dbms="SQL Server"
-				encoding="utf8"
-				path="testHello.sql"
-				procedureName="testHello"
-				relativeToChangelogFile="true"
-				schemaName="public">
-				CREATE OR REPLACE PROCEDURE testHello
-				IS
+			<createProcedure>
+				CREATE PROCEDURE GetTop10Persons
+				AS
 				BEGIN
-				  PRINT('Hello From The Database!');
+				  Select top 10 * from Person;
 				END;
 			</createProcedure>
 			<rollback>
 			 <sql>
-				DROP PROCEDURE testHello;
+				DROP PROCEDURE GetTop10Persons;
+			 </sql>
+			</rollback>
+	</changeSet
+	<changeSet id="002-senr-29Jul2015" author="senr" failOnError="false" runOnChange="true">
+			<comment>Create SP GetTop10City</comment>
+			<createProcedure>
+				CREATE PROCEDURE GetTop10City
+				AS
+				BEGIN
+				  Select top 10 * from City;
+				END;
+			</createProcedure>
+			<rollback>
+			 <sql>
+				DROP PROCEDURE GetTop10City;
 			 </sql>
 			</rollback>
 	</changeSet>
