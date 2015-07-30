@@ -20,7 +20,7 @@
 				DROP PROCEDURE GetTop10Persons;
 			 </sql>
 			</rollback>
-	</changeSet
+	</changeSet>
 	<changeSet id="002-senr-29Jul2015" author="senr" failOnError="false" runOnChange="true">
 			<comment>Create SP GetTop10City</comment>
 			<createProcedure>
